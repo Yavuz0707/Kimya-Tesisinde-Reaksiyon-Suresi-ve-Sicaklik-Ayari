@@ -131,45 +131,40 @@ Bu durum, sistemin reaksiyon süresine karşı daha hassas olduğunu göstermekt
 
 ⚙️ Kurulum ve Çalıştırma Yönergeleri
 Gerekli Yazılımlar
+
 Python 3.8 veya üzeri
 
 Jupyter Notebook veya VS Code (Python eklentisi yüklü)
 
 Gerekli Kütüphaneler
-Aşağıdaki Python kütüphanelerinin kurulu olması gerekmektedir:
+
+Projede aşağıdaki Python kütüphaneleri kullanılmaktadır:
 
 numpy
 
 matplotlib
 
-Kurulum için:
+Kurulum:
 
-bash
-Kodu kopyala
 pip install numpy matplotlib
+
 Projenin Çalıştırılması
-Proje dosyalarını GitHub üzerinden indirin veya klonlayın:
 
-bash
-Kodu kopyala
-git clone <repo_adresi>
-Proje klasörüne girin:
+Proje dosyaları GitHub üzerinden indirilir veya klonlanır
 
-bash
-Kodu kopyala
-cd <repo_klasörü>
-Jupyter Notebook kullanıyorsanız:
+Proje klasörüne girilir
 
-bash
-Kodu kopyala
+Jupyter Notebook kullanımı:
+
 jupyter notebook
-Notebook dosyasını açarak hücreleri sırasıyla çalıştırın.
 
-VS Code kullanıyorsanız:
+Notebook dosyası açılarak hücreler sırasıyla çalıştırılır.
 
-Proje klasörünü VS Code ile açın
+VS Code kullanımı:
 
-Python dosyasını veya notebook dosyasını çalıştırın
+Proje klasörü VS Code ile açılır
+
+Python dosyası veya notebook dosyası çalıştırılır
 
 ✅ Sonuç
 Bu çalışma, genetik algoritmanın kısıtlı ve doğrusal olmayan
