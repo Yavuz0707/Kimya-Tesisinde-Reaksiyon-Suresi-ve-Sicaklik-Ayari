@@ -6,9 +6,9 @@ Bu projede, bir kimya tesisinde reaksiyon süresi (x1) ve sıcaklık (x2) parame
 
 👤 Öğrenci Bilgileri
 
-Ad Soyad:
+Ad Soyad: Şükrü YAVUZ
 
-Öğrenci No:
+Öğrenci No: 2312729015
 
 Ders: Genetik Algoritmalar
 
