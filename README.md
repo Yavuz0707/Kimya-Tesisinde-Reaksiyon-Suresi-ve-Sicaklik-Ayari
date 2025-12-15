@@ -1,178 +1,152 @@
-🧬 Genetik Algoritma ile Optimizasyon
-Kimya Tesisinde Reaksiyon Süresi ve Sıcaklık Ayarı
+Kimya Tesisinde Reaksiyon Süresi ve Sıcaklık Ayarı Optimizasyonu
+Proje Özeti
 
-Bu projede, bir kimya tesisinde reaksiyon süresi (x1) ve sıcaklık (x2) parametrelerinin reaksiyon verimi üzerindeki etkisi Genetik Algoritma (GA) kullanılarak optimize edilmiştir.
-Çalışma, genetik algoritmanın temel bileşenleri manuel olarak uygulanarak gerçekleştirilmiştir.
+Bu proje, kimyasal üretim süreçlerinde reaksiyon verimini artırmaya yönelik olarak tasarlanmış bir optimizasyon çalışmasıdır. Reaksiyon süresi ve sıcaklık gibi temel proses parametrelerinin uygun şekilde belirlenmesi, üretim kalitesi, enerji tüketimi ve güvenlik açısından kritik öneme sahiptir. Çalışmada, bu parametrelerin en uygun değerleri matematiksel optimizasyon yöntemleri kullanılarak analiz edilmiştir.
 
-👤 Öğrenci Bilgileri
+Problem Bağlamı
 
-Ad Soyad: Şükrü YAVUZ
+Kimya endüstrisinde reaksiyon koşullarının doğru belirlenmesi, üretim verimliliğini doğrudan etkiler. Özellikle reaksiyon süresi ve sıcaklık, kimyasal dönüşüm oranlarını belirleyen temel faktörlerdir. Bu parametrelerin hatalı seçilmesi aşağıdaki sorunlara yol açabilir:
 
-Öğrenci No: 2312729015
+Ürün veriminde düşüş
 
-Ders: Genetik Algoritmalar
+Gereksiz enerji tüketimi
 
-🎯 Problem Tanımı
+Üretim süresinin uzaması
 
-Amaç, aşağıdaki matematiksel ifadeyle tanımlanan reaksiyon verimini maksimum yapan parametreleri bulmaktır:
+Proses güvenliğinin azalması
 
-𝑦
-=
-8
-𝑥
-1
-+
-3
-𝑥
-2
-−
-𝑥
-1
-𝑥
-2
-+
-𝑥
-1
-2
-y=8x
-1
-	​
+Bu nedenle, söz konusu parametrelerin sistematik bir şekilde optimize edilmesi gerekmektedir.
 
-+3x
-2
-	​
+Çalışmanın Kapsamı
 
-−x
-1
-	​
+Bu çalışmada, kısıtlı bir optimizasyon problemi ele alınmış ve iki farklı optimizasyon yaklaşımı kullanılarak çözüm aranmıştır. Hem gradyan tabanlı hem de evrimsel optimizasyon yöntemleri uygulanarak elde edilen sonuçlar karşılaştırılmış ve en uygun çalışma koşulları belirlenmiştir.
 
-x
-2
-	​
+Çalışmanın Amacı
 
-+x
-1
-2
-	​
+Belirlenen operasyonel ve güvenlik kısıtları altında, reaksiyon verimini maksimize eden reaksiyon süresi ve sıcaklık değerlerini tespit etmek ve kullanılan optimizasyon yöntemlerinin performanslarını analiz etmektir.
 
-🔧 Değişkenler
+Matematiksel Modelleme
+Amaç Fonksiyonu
 
-x1: Reaksiyon süresi (dk) → [10, 60]
+Problem, aşağıdaki reaksiyon verimi fonksiyonunun maksimize edilmesi şeklinde modellenmiştir:
 
-x2: Sıcaklık (°C) → [40, 120]
+maximize y = 8x1 + 3x2 − x1·x2 + x1²
 
-⚠️ Kısıtlar
 
-𝑥
-1
-+
-𝑥
-2
-≤
-140
-x
-1
-	​
+Fonksiyonda yer alan terimlerin anlamı:
 
-+x
-2
-	​
+8x1: Reaksiyon süresinin verime doğrusal katkısı
 
-≤140
+3x2: Sıcaklığın verime olan pozitif etkisi
 
-𝑥
-2
-≥
-60
-x
-2
-	​
+−x1·x2: Süre ve sıcaklığın birlikte aşırı artmasının olumsuz etkisi
 
-≥60
+x1²: Uzun reaksiyon süresinin dönüşüm oranını artırıcı etkisi
 
-🧠 Genetik Algoritma Yaklaşımı
+Karar Değişkenleri
+Reaksiyon Süresi (x1)
 
-Bu çalışmada genetik algoritma hazır GA kütüphaneleri kullanılmadan, adım adım manuel olarak uygulanmıştır.
+Birim: Dakika
 
-Kullanılan GA Bileşenleri
+Değer Aralığı: 10 ≤ x1 ≤ 60
 
-Kromozom Yapısı: [x1, x2]
+Açıklama: Kimyasal reaksiyonun reaktör içerisinde devam ettiği süre
 
-Başlangıç Popülasyonu: Rastgele oluşturma
+Sıcaklık (x2)
 
-Uygunluk (Fitness) Fonksiyonu: Amaç fonksiyonu
+Birim: °C
 
-Kısıt Yönetimi: Ceza (Penalty) yöntemi
+Değer Aralığı: 40 ≤ x2 ≤ 120
 
-Seçilim: Turnuva seçimi (Tournament Selection)
+Açıklama: Reaksiyon ortamının sıcaklık seviyesi
 
-Çaprazlama: Aritmetik çaprazlama
+Kısıtlar
+Toplam Yük Kısıtı
+x1 + x2 ≤ 140
 
-Mutasyon: Rastgele gen mutasyonu
 
-Elitizm: En iyi bireylerin korunması
+Bu kısıt, yüksek sıcaklık ve uzun reaksiyon süresinin birlikte oluşturabileceği güvenlik risklerini sınırlamak amacıyla tanımlanmıştır.
 
-Jenerasyon Sayısı: 100
+Minimum Sıcaklık Kısıtı
+x2 ≥ 60
 
-Bu yapı sayesinde algoritma, geçerli çözüm uzayına yönlendirilmiş ve optimum sonuca ulaşmıştır.
 
-📊 Elde Edilen Sonuçlar
+Reaksiyonun gerçekleşebilmesi için gerekli minimum aktivasyon enerjisini temsil eder.
 
-Genetik algoritma çalıştırıldığında aşağıdaki sonuçlar elde edilmiştir:
+Sınır Kısıtları
+10 ≤ x1 ≤ 60
+40 ≤ x2 ≤ 120
 
-Optimal Reaksiyon Süresi (x1): ≈ 60 dk
 
-Optimal Sıcaklık (x2): ≈ 60 °C
+Bu sınırlar, ekipman kapasitesi ve operasyonel güvenlik gerekleri doğrultusunda belirlenmiştir.
 
-Maksimum Reaksiyon Verimi: ≈ 660
+Problem Özellikleri
 
-📈 Üretilen Grafikler
+Problem tipi: Kısıtlı, doğrusal olmayan optimizasyon
 
-Genetik algoritma yakınsama grafiği (fitness – jenerasyon)
+Değişken sayısı: 2
 
-Amaç fonksiyonunun kontur grafiği
+Kısıt sayısı: 2 eşitsizlik + sınır kısıtları
 
-Kısıt bölgelerinin görsel gösterimi
+Çözüm uzayı: İki boyutlu sürekli alan
 
-Bulunan optimal çözümün çözüm uzayı üzerinde işaretlenmesi
+Fonksiyon yapısı: Kuadratik ve konveks olmayan
 
-🔍 Duyarlılık Analizi ve Yorum
+Notebook İçeriği
 
-Elde edilen sonuçlar, optimum noktanın kısıtların izin verdiği sınır bölgede oluştuğunu göstermektedir.
+Notebook dosyasında aşağıdaki adımlar yer almaktadır:
 
-x1 (reaksiyon süresi) değişkeni, fonksiyonda karesel terim (
-𝑥
-1
-2
-x
-1
-2
-	​
+Gerekli kütüphanelerin içe aktarılması ve grafik ayarları
 
-) içermesi nedeniyle verim üzerinde daha baskın etkiye sahiptir.
+Amaç fonksiyonunun ve kısıtların tanımlanması
 
-Reaksiyon süresinde yapılan küçük azalışlar, verimde belirgin düşüşlere yol açmaktadır.
+Optimizasyon algoritmalarının uygulanması
 
-Bu durum, sistemin reaksiyon süresine karşı daha hassas olduğunu göstermektedir.
+Sonuçların tablo ve grafiklerle karşılaştırılması
 
-▶️ Çalıştırma Talimatları
-Gerekli Kütüphaneler
-pip install numpy matplotlib
+Duyarlılık analizi ve yorumlama
 
-Çalıştırma
+Çözüm doğrulaması ve istatistiksel değerlendirme
 
-Kod Jupyter Notebook veya VS Code (Python) ortamında çalıştırılabilir.
+Optimizasyon Yöntemleri
+SLSQP (Sequential Least Squares Programming)
 
-Hücreler sırasıyla çalıştırıldığında tüm sonuçlar ve grafikler otomatik olarak üretilecektir.
+Kısıtlı problemlerde etkili bir gradyan tabanlı yöntem
 
-✅ Sonuç
+Hızlı yakınsama sağlar
 
-Bu çalışma kapsamında:
+Başlangıç noktasına duyarlıdır
 
-Genetik algoritma mantığı eksiksiz şekilde uygulanmış,
+Differential Evolution
 
-Problem kısıtları dikkate alınmış,
+Evrimsel ve küresel arama yeteneğine sahiptir
 
-Sonuçlar grafiklerle desteklenerek analiz edilmiştir.
+Başlangıç noktasına duyarsızdır
 
-Elde edilen bulgular, genetik algoritmanın kısıtlı ve çok değişkenli optimizasyon problemlerinde etkili bir yöntem olduğunu göstermektedir.
+Daha fazla hesaplama süresi gerektirir
+
+Her iki yöntemden elde edilen sonuçlar karşılaştırılarak en uygun çözüm seçilmiştir.
+
+Görselleştirme ve Analiz
+
+Amaç fonksiyonunun 3B yüzey grafiği
+
+Kısıt bölgeleri ile birlikte kontur grafikleri
+
+Optimal nokta işaretlemeleri
+
+Parametrelerin tek tek etkisini gösteren kesit grafikleri
+
+Duyarlılık Analizi
+
+Optimal çözüm etrafında küçük parametre değişikliklerinin verim üzerindeki etkisi incelenmiştir. Bu analiz, sistemin hangi parametreye daha hassas olduğunu ortaya koymakta ve operasyonel kararlar için yol gösterici olmaktadır.
+
+Çözümün Doğrulanması
+
+Çözümün güvenilirliğini test etmek amacıyla farklı başlangıç noktalarından çoklu optimizasyon çalışmaları gerçekleştirilmiş ve elde edilen sonuçların tutarlılığı analiz edilmiştir.
+
+Sonuç ve Öneriler
+
+Elde edilen sonuçlar, reaksiyon süresi ve sıcaklık parametrelerinin doğru şekilde optimize edilmesinin verimlilik üzerinde önemli bir etkisi olduğunu göstermektedir. Özellikle reaksiyon süresi değişkeninin sistem üzerinde daha baskın bir rol oynadığı gözlemlenmiştir.
+
+Bu çalışma, kısıtlı ve doğrusal olmayan optimizasyon problemlerinde matematiksel ve evrimsel yöntemlerin etkinliğini ortaya koymaktadır.
