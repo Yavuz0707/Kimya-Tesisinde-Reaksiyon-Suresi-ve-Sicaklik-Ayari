@@ -1,41 +1,45 @@
-Kimya Tesisinde Reaksiyon Süresi ve Sıcaklık Ayarı Optimizasyonu
-Proje Özeti
+# 🧬 Kimya Tesisinde Reaksiyon Süresi ve Sıcaklık Ayarı  
+## Genetik Algoritma ile Optimizasyon
 
-Bu proje, kimyasal üretim süreçlerinde reaksiyon verimini artırmaya yönelik olarak tasarlanmış bir optimizasyon çalışmasıdır. Reaksiyon süresi ve sıcaklık gibi temel proses parametrelerinin uygun şekilde belirlenmesi, üretim kalitesi, enerji tüketimi ve güvenlik açısından kritik öneme sahiptir. Çalışmada, bu parametrelerin en uygun değerleri matematiksel optimizasyon yöntemleri kullanılarak analiz edilmiştir.
+Bu proje, bir kimya tesisinde reaksiyon süresi (**x1**) ve sıcaklık (**x2**) parametrelerinin,
+reaksiyon verimi üzerindeki etkisini inceleyen ve bu parametreleri **genetik algoritma**
+kullanarak optimize eden bir çalışmadır.
 
-Problem Bağlamı
+Çalışma kapsamında genetik algoritma **manuel olarak** uygulanmış,
+optimum çalışma koşulları kısıtlar altında belirlenmiştir.
 
-Kimya endüstrisinde reaksiyon koşullarının doğru belirlenmesi, üretim verimliliğini doğrudan etkiler. Özellikle reaksiyon süresi ve sıcaklık, kimyasal dönüşüm oranlarını belirleyen temel faktörlerdir. Bu parametrelerin hatalı seçilmesi aşağıdaki sorunlara yol açabilir:
+---
 
-Ürün veriminde düşüş
+## 👤 Öğrenci Bilgileri
 
-Gereksiz enerji tüketimi
+- **Ad Soyad:** Şükrü YAVUZ  
+- **Öğrenci No:** 2312729015  
+- **Yöntem:** Genetik Algoritma (Manuel İmplementasyon)
 
-Üretim süresinin uzaması
+---
 
-Proses güvenliğinin azalması
+## 🎯 Problem Tanımı
 
-Bu nedenle, söz konusu parametrelerin sistematik bir şekilde optimize edilmesi gerekmektedir.
+Kimyasal üretim süreçlerinde reaksiyon verimi, proses parametrelerinin doğru seçimine
+doğrudan bağlıdır. Reaksiyon süresi ve sıcaklık, bu süreçte en kritik iki değişkendir.
 
-Çalışmanın Kapsamı
+Bu çalışmanın amacı, verilen güvenlik ve operasyonel kısıtlar altında
+reaksiyon verimini maksimize eden parametre değerlerini bulmaktır.
 
-Bu çalışmada, kısıtlı bir optimizasyon problemi ele alınmış ve iki farklı optimizasyon yaklaşımı kullanılarak çözüm aranmıştır. Hem gradyan tabanlı hem de evrimsel optimizasyon yöntemleri uygulanarak elde edilen sonuçlar karşılaştırılmış ve en uygun çalışma koşulları belirlenmiştir.
+---
 
-Çalışmanın Amacı
+## 📐 Matematiksel Modelleme
 
-Belirlenen operasyonel ve güvenlik kısıtları altında, reaksiyon verimini maksimize eden reaksiyon süresi ve sıcaklık değerlerini tespit etmek ve kullanılan optimizasyon yöntemlerinin performanslarını analiz etmektir.
+### Amaç Fonksiyonu
 
-Matematiksel Modelleme
-Amaç Fonksiyonu
+Problem aşağıdaki reaksiyon verimi fonksiyonunun **maksimize edilmesi**
+şeklinde modellenmiştir:
 
-Problem, aşağıdaki reaksiyon verimi fonksiyonunun maksimize edilmesi şeklinde modellenmiştir:
-
-maximize y = 8x1 + 3x2 − x1·x2 + x1²
-
-
+```text
+maximize y = 8x1 + 3x2 - x1·x2 + x1²
 Fonksiyonda yer alan terimlerin anlamı:
 
-8x1: Reaksiyon süresinin verime doğrusal katkısı
+8x1: Reaksiyon süresinin verime olan doğrusal katkısı
 
 3x2: Sıcaklığın verime olan pozitif etkisi
 
@@ -43,110 +47,90 @@ Fonksiyonda yer alan terimlerin anlamı:
 
 x1²: Uzun reaksiyon süresinin dönüşüm oranını artırıcı etkisi
 
-Karar Değişkenleri
+🔧 Karar Değişkenleri
 Reaksiyon Süresi (x1)
-
 Birim: Dakika
 
-Değer Aralığı: 10 ≤ x1 ≤ 60
-
-Açıklama: Kimyasal reaksiyonun reaktör içerisinde devam ettiği süre
+Aralık: 10 ≤ x1 ≤ 60
 
 Sıcaklık (x2)
-
 Birim: °C
 
-Değer Aralığı: 40 ≤ x2 ≤ 120
+Aralık: 40 ≤ x2 ≤ 120
 
-Açıklama: Reaksiyon ortamının sıcaklık seviyesi
-
-Kısıtlar
-Toplam Yük Kısıtı
+⚠️ Kısıtlar
 x1 + x2 ≤ 140
 
-
-Bu kısıt, yüksek sıcaklık ve uzun reaksiyon süresinin birlikte oluşturabileceği güvenlik risklerini sınırlamak amacıyla tanımlanmıştır.
-
-Minimum Sıcaklık Kısıtı
 x2 ≥ 60
 
-
-Reaksiyonun gerçekleşebilmesi için gerekli minimum aktivasyon enerjisini temsil eder.
-
-Sınır Kısıtları
 10 ≤ x1 ≤ 60
+
 40 ≤ x2 ≤ 120
 
+Bu kısıtlar, güvenlik, ekipman kapasitesi ve reaksiyonun gerçekleşebilirliği
+dikkate alınarak belirlenmiştir.
 
-Bu sınırlar, ekipman kapasitesi ve operasyonel güvenlik gerekleri doğrultusunda belirlenmiştir.
+🧠 Genetik Algoritma Yapısı
+Bu projede genetik algoritma hazır kütüphaneler kullanılmadan
+manuel olarak uygulanmıştır.
 
-Problem Özellikleri
+Kullanılan Bileşenler
+Kromozom Yapısı: [x1, x2]
 
-Problem tipi: Kısıtlı, doğrusal olmayan optimizasyon
+Popülasyon Oluşturma: Rastgele
 
-Değişken sayısı: 2
+Uygunluk (Fitness) Fonksiyonu: Amaç fonksiyonu
 
-Kısıt sayısı: 2 eşitsizlik + sınır kısıtları
+Kısıt Yönetimi: Ceza (Penalty) yöntemi
 
-Çözüm uzayı: İki boyutlu sürekli alan
+Seçilim: Turnuva seçimi (Tournament Selection)
 
-Fonksiyon yapısı: Kuadratik ve konveks olmayan
+Çaprazlama: Aritmetik çaprazlama
 
-Notebook İçeriği
+Mutasyon: Rastgele gen mutasyonu
 
-Notebook dosyasında aşağıdaki adımlar yer almaktadır:
+Elitizm: En iyi bireylerin korunması
 
-Gerekli kütüphanelerin içe aktarılması ve grafik ayarları
+🔄 Optimizasyon Süreci
+Popülasyon, her jenerasyonda fitness değerine göre sıralanmıştır
 
-Amaç fonksiyonunun ve kısıtların tanımlanması
+En iyi bireyler elitizm yöntemiyle korunmuştur
 
-Optimizasyon algoritmalarının uygulanması
+Seçilim, çaprazlama ve mutasyon adımlarıyla yeni bireyler üretilmiştir
 
-Sonuçların tablo ve grafiklerle karşılaştırılması
+Algoritma 100 jenerasyon boyunca çalıştırılmıştır
 
-Duyarlılık analizi ve yorumlama
+📊 Sonuçlar ve Görselleştirme
+Algoritma çalıştırıldığında aşağıdaki optimum değerlere ulaşılmıştır:
 
-Çözüm doğrulaması ve istatistiksel değerlendirme
+Optimal Reaksiyon Süresi (x1): ≈ 60 dk
 
-Optimizasyon Yöntemleri
-SLSQP (Sequential Least Squares Programming)
+Optimal Sıcaklık (x2): ≈ 60 °C
 
-Kısıtlı problemlerde etkili bir gradyan tabanlı yöntem
+Maksimum Reaksiyon Verimi: ≈ 640
 
-Hızlı yakınsama sağlar
+Üretilen Grafikler
+Genetik algoritma yakınsama grafiği (fitness – jenerasyon)
 
-Başlangıç noktasına duyarlıdır
+Amaç fonksiyonunun kontur grafiği
 
-Differential Evolution
+Kısıt bölgeleri ve optimal çözümün görsel gösterimi
 
-Evrimsel ve küresel arama yeteneğine sahiptir
+🔍 Duyarlılık Analizi
+Optimum çözüm etrafında yapılan analizler göstermektedir ki:
 
-Başlangıç noktasına duyarsızdır
+Reaksiyon süresi (x1) değişkeni, karesel terim içermesi nedeniyle
+verim üzerinde daha baskın bir etkiye sahiptir
 
-Daha fazla hesaplama süresi gerektirir
+Reaksiyon süresinde yapılan küçük azalışlar,
+verimde önemli düşüşlere yol açmaktadır
 
-Her iki yöntemden elde edilen sonuçlar karşılaştırılarak en uygun çözüm seçilmiştir.
+Bu durum, sistemin reaksiyon süresine karşı daha hassas olduğunu göstermektedir.
 
-Görselleştirme ve Analiz
+✅ Sonuç
+Bu çalışma, genetik algoritmanın kısıtlı ve doğrusal olmayan optimizasyon
+problemlerinde etkili bir yöntem olduğunu göstermektedir.
 
-Amaç fonksiyonunun 3B yüzey grafiği
-
-Kısıt bölgeleri ile birlikte kontur grafikleri
-
-Optimal nokta işaretlemeleri
-
-Parametrelerin tek tek etkisini gösteren kesit grafikleri
-
-Duyarlılık Analizi
-
-Optimal çözüm etrafında küçük parametre değişikliklerinin verim üzerindeki etkisi incelenmiştir. Bu analiz, sistemin hangi parametreye daha hassas olduğunu ortaya koymakta ve operasyonel kararlar için yol gösterici olmaktadır.
-
-Çözümün Doğrulanması
-
-Çözümün güvenilirliğini test etmek amacıyla farklı başlangıç noktalarından çoklu optimizasyon çalışmaları gerçekleştirilmiş ve elde edilen sonuçların tutarlılığı analiz edilmiştir.
-
-Sonuç ve Öneriler
-
-Elde edilen sonuçlar, reaksiyon süresi ve sıcaklık parametrelerinin doğru şekilde optimize edilmesinin verimlilik üzerinde önemli bir etkisi olduğunu göstermektedir. Özellikle reaksiyon süresi değişkeninin sistem üzerinde daha baskın bir rol oynadığı gözlemlenmiştir.
-
-Bu çalışma, kısıtlı ve doğrusal olmayan optimizasyon problemlerinde matematiksel ve evrimsel yöntemlerin etkinliğini ortaya koymaktadır.
+Elde edilen sonuçlar, kimyasal proseslerde
+reaksiyon süresi ve sıcaklık ayarının dikkatli bir şekilde optimize edilmesinin
+verimlilik açısından kritik öneme sahip olduğunu ortaya koymaktadır.
