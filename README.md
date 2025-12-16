@@ -1,12 +1,12 @@
 # 🧬 Kimya Tesisinde Reaksiyon Süresi ve Sıcaklık Ayarı  
 ## Genetik Algoritma ile Optimizasyon
 
-Bu proje, bir kimya tesisinde reaksiyon süresi (**x1**) ve sıcaklık (**x2**) parametrelerinin,
+Bu proje, bir kimya tesisinde reaksiyon süresi (**x1**) ve sıcaklık (**x2**) parametrelerinin
 reaksiyon verimi üzerindeki etkisini inceleyen ve bu parametreleri **genetik algoritma**
 kullanarak optimize eden bir çalışmadır.
 
-Çalışma kapsamında genetik algoritma **manuel olarak** uygulanmış,
-optimum çalışma koşulları kısıtlar altında belirlenmiştir.
+Çalışmada genetik algoritma **manuel olarak** uygulanmış, elde edilen sonuçlar
+grafikler ve duyarlılık analizi ile değerlendirilmiştir.
 
 ---
 
@@ -23,8 +23,8 @@ optimum çalışma koşulları kısıtlar altında belirlenmiştir.
 Kimyasal üretim süreçlerinde reaksiyon verimi, proses parametrelerinin doğru seçimine
 doğrudan bağlıdır. Reaksiyon süresi ve sıcaklık, bu süreçte en kritik iki değişkendir.
 
-Bu çalışmanın amacı, verilen güvenlik ve operasyonel kısıtlar altında
-reaksiyon verimini maksimize eden parametre değerlerini bulmaktır.
+Bu çalışmanın amacı, verilen operasyonel ve güvenlik kısıtları altında
+reaksiyon verimini **maksimize eden** reaksiyon süresi ve sıcaklık değerlerini bulmaktır.
 
 ---
 
@@ -32,7 +32,7 @@ reaksiyon verimini maksimize eden parametre değerlerini bulmaktır.
 
 ### Amaç Fonksiyonu
 
-Problem aşağıdaki reaksiyon verimi fonksiyonunun **maksimize edilmesi**
+Problem, aşağıdaki reaksiyon verimi fonksiyonunun **maksimize edilmesi**
 şeklinde modellenmiştir:
 
 ```text
@@ -71,8 +71,8 @@ Bu kısıtlar, güvenlik, ekipman kapasitesi ve reaksiyonun gerçekleşebilirli�
 dikkate alınarak belirlenmiştir.
 
 🧠 Genetik Algoritma Yapısı
-Bu projede genetik algoritma hazır kütüphaneler kullanılmadan
-manuel olarak uygulanmıştır.
+Bu projede genetik algoritma hazır kütüphaneler kullanılmadan,
+tamamen manuel olarak uygulanmıştır.
 
 Kullanılan Bileşenler
 Kromozom Yapısı: [x1, x2]
@@ -92,45 +92,84 @@ Mutasyon: Rastgele gen mutasyonu
 Elitizm: En iyi bireylerin korunması
 
 🔄 Optimizasyon Süreci
-Popülasyon, her jenerasyonda fitness değerine göre sıralanmıştır
+Popülasyon her jenerasyonda fitness değerine göre sıralanmıştır
 
 En iyi bireyler elitizm yöntemiyle korunmuştur
 
-Seçilim, çaprazlama ve mutasyon adımlarıyla yeni bireyler üretilmiştir
+Seçilim, çaprazlama ve mutasyon adımları ile yeni bireyler üretilmiştir
 
 Algoritma 100 jenerasyon boyunca çalıştırılmıştır
 
-📊 Sonuçlar ve Görselleştirme
-Algoritma çalıştırıldığında aşağıdaki optimum değerlere ulaşılmıştır:
+📊 Örnek Çalışma Çıktıları
+Algoritma çalıştırıldığında elde edilen sonuçlar:
 
-Optimal Reaksiyon Süresi (x1): ≈ 60 dk
+text
+Kodu kopyala
+Optimal x1 (Süre)    : 59.9682 dk
+Optimal x2 (Sıcaklık): 60.3198 °C
+Maksimum Verim (y)   : 639.6160
+Yakınsama Analizi
+Yakınsama grafiği, genetik algoritmanın jenerasyonlar boyunca
+fitness değerini artırdığını ve belirli bir noktadan sonra
+kararlı hale geldiğini göstermektedir.
 
-Optimal Sıcaklık (x2): ≈ 60 °C
-
-Maksimum Reaksiyon Verimi: ≈ 640
-
-Üretilen Grafikler
-Genetik algoritma yakınsama grafiği (fitness – jenerasyon)
-
-Amaç fonksiyonunun kontur grafiği
-
-Kısıt bölgeleri ve optimal çözümün görsel gösterimi
+Çözüm Uzayı ve Kısıtlar
+Kontur grafiğinde, çözümün kısıtların izin verdiği sınır bölgede
+oluştuğu açıkça görülmektedir. Optimal nokta,
+tüm kısıtları sağlamaktadır.
 
 🔍 Duyarlılık Analizi
-Optimum çözüm etrafında yapılan analizler göstermektedir ki:
+Yapılan analizler göstermektedir ki:
 
 Reaksiyon süresi (x1) değişkeni, karesel terim içermesi nedeniyle
 verim üzerinde daha baskın bir etkiye sahiptir
 
 Reaksiyon süresinde yapılan küçük azalışlar,
-verimde önemli düşüşlere yol açmaktadır
+verimde ciddi düşüşlere yol açmaktadır
 
 Bu durum, sistemin reaksiyon süresine karşı daha hassas olduğunu göstermektedir.
 
+⚙️ Kurulum ve Çalıştırma Yönergeleri
+Gerekli Yazılımlar
+
+Python 3.8 veya üzeri
+
+Jupyter Notebook veya VS Code (Python eklentisi yüklü)
+
+Gerekli Kütüphaneler
+
+Projede aşağıdaki Python kütüphaneleri kullanılmaktadır:
+
+numpy
+
+matplotlib
+
+Kurulum:
+
+pip install numpy matplotlib
+
+Projenin Çalıştırılması
+
+Proje dosyaları GitHub üzerinden indirilir veya klonlanır
+
+Proje klasörüne girilir
+
+Jupyter Notebook kullanımı:
+
+jupyter notebook
+
+Notebook dosyası açılarak hücreler sırasıyla çalıştırılır.
+
+VS Code kullanımı:
+
+Proje klasörü VS Code ile açılır
+
+Python dosyası veya notebook dosyası çalıştırılır
+
 ✅ Sonuç
-Bu çalışma, genetik algoritmanın kısıtlı ve doğrusal olmayan optimizasyon
-problemlerinde etkili bir yöntem olduğunu göstermektedir.
+Bu çalışma, genetik algoritmanın kısıtlı ve doğrusal olmayan
+optimizasyon problemlerinde etkili bir yöntem olduğunu göstermektedir.
 
 Elde edilen sonuçlar, kimyasal proseslerde
-reaksiyon süresi ve sıcaklık ayarının dikkatli bir şekilde optimize edilmesinin
-verimlilik açısından kritik öneme sahip olduğunu ortaya koymaktadır.
+reaksiyon süresi ve sıcaklık ayarının dikkatli bir şekilde
+optimize edilmesinin verimlilik açısından kritik öneme sahip olduğunu ortaya koymaktadır.
