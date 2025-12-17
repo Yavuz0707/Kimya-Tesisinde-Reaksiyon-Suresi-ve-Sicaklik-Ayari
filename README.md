@@ -10,7 +10,7 @@ grafikler ve duyarlılık analizi ile değerlendirilmiştir.
 
 ---
 
-## 👤 Öğrenci Bilgileri
+## 👤 Öğrenci Bilgileri:
 
 - **Ad Soyad:** Şükrü YAVUZ  
 - **Öğrenci No:** 2312729015  
