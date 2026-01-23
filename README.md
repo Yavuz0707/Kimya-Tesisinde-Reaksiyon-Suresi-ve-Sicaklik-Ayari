@@ -11,7 +11,7 @@ Proje kapsamında, matematiksel modelleme, kısıtlı optimizasyon teknikleri, a
 
 | Bilgi | Detay |
 |-------|-------|
-| **Ad Soyad** | Şükrü YAVUZ |
+| **Ad Soyad** | Şükrü Yavuz |
 | **Öğrenci Numarası** | 2312729015 |
 | **Ders** | Yapay Zeka |
 | **Proje Konusu** | Kimya Tesisinde Reaksiyon Parametrelerinin Genetik Algoritma ile Optimizasyonu |
