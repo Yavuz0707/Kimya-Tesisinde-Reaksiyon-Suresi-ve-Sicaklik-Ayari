@@ -1,7 +1,7 @@
 # 🧬 Kimya Tesisinde Reaksiyon Süresi ve Sıcaklık Optimizasyonu Projesi
 ## Genetik Algoritma ile Maksimum Verim Analizi
 
-Bu proje, endüstriyel bir kimya tesisinde gerçekleşen kimyasal reaksiyonlarda **reaksiyon süresi (x₁)** ve **sıcaklık (x₂)** parametrelerinin optimal değerlerini belirleyerek reaksiyon verimini maksimize etmeyi amaçlayan bir optimizasyon çalışmasıdır. Çalışmada, **Genetik Algoritma (Genetic Algorithm - GA)** yöntemi **manuel olarak** implemente edilmiş ve hazır optimizasyon kütüphaneleri kullanılmamıştır.
+Bu proje, endüstriyel bir kimya tesisinde gerçekleşen kimyasal reaksiyonlarda **reaksiyon süresi (x₁)** ve **sıcaklık (x₂)** parametrelerinin optimal değerlerini belirleyerek reaksiyon verimini maksimize etmeyi amaçlayan bir optimizasyon çalışmasıdır. Çalışmada, **Genetik Algoritma (Genetic Algorithm - GA)** yöntemi **manuel olarak** implemente edilmiş ve hazır optimizasyon kütüphaneleri kullanılmamıştır./
 
 Proje kapsamında, matematiksel modelleme, kısıtlı optimizasyon teknikleri, algoritma tasarımı, görselleştirme ve duyarlılık analizi gibi konular detaylı bir şekilde ele alınmıştır.
 
